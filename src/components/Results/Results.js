@@ -14,7 +14,7 @@ const Results = ({movies}) => {
      
      return (  
      <div className='movies-container'>
-         <div className="ui six cards">
+         <div className="ui six  cards">
              {list}
          </div>
     </div>);
