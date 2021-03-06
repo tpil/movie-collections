@@ -1,0 +1,15 @@
+.profile{
+  padding: 10px;
+ background-color: white;
+    font-size: large;
+  display:flex;
+ justify-content: flex-end;
+ 
+ width: 100%;
+    
+}
+i{
+
+    color:black;
+    font-size: 1.2em;
+}
