@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieSearch from '../components/MovieSearch/MovieSearch';
 import User from '../components/User/User';
+import Results from '../components/Results/Results';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
 
         this.state ={
             route:'home',
-            searchfield :'',
+            movieTerm :'',
             movies: [],
         }
     }
@@ -17,14 +18,22 @@ class App extends Component {
 
     componentDidMount(){
 
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(users => this.setState({robots:users}));
+        
     }
 
-    onSearchChange =(event) =>{
+    onTermChange =(e) =>{
 
-        this.setState({searchfield:event.target.value});
+        this.setState({movieTerm:e.target.value});
+        
+    }
+    onSearchSubmit =(term) =>{
+        this.setState({movieTerm:term});     
+        
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=85204a8cc33baf447559fb6d51b18313&language=en-US&include_adult=false&query=${this.state.movieTerm}`)
+        .then(response => response.json())
+        .then(data=>this.setState({movies:data.results}))
+        .then(console.log(this.state.movies));
+       
     }
 
     render() {
@@ -34,13 +43,10 @@ class App extends Component {
             <Input />
             <Results />
             */
-            <div className=" container-fluid app">
-                <div class="row">
-                        <User />
-                </div>
-                <div class="row ">
-                     <MovieSearch searchChange={this.onSearchChange}/>
-                </div>
+            <div className="app">  
+                <User />
+                <MovieSearch onTermChange={this.onTermChange} onSearchSubmit={this.onSearchSubmit} />
+                <Results movies={this.state.movies}/>
               
             </div>
         )

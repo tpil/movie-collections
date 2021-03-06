@@ -1,5 +1,22 @@
 .searchInput{
-    margin:auto;
-    max-width: 500px;
+    
+    margin:25px auto;
+    max-width: 420px;
+    background-color: #1b1c1d;
+    height:46px;
+  text-align: center;
+    border-radius: 5px;
 
+}
+input{
+
+    width: 400px;
+    height: 46px;
+    border:2px #020d18 solid;
+    font-size: 16px;
+    color: #abb7c4;   
+    
+}
+i{
+    color:white;
 }
