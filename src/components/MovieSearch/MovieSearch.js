@@ -24,8 +24,3 @@ const MovieSearch = ({onSearchSubmit,onTermChange}) => {
 }
 
 export default MovieSearch;
-
-
-
-
-

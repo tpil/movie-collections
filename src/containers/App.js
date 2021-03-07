@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import MovieSearch from '../components/MovieSearch/MovieSearch';
 import User from '../components/User/User';
 import Results from '../components/Results/Results';
-//import Pagination from '../components/Pagination/Pagination';
-import { Pagination } from 'semantic-ui-react'
+import { Pagination,Popup } from 'semantic-ui-react'
 import './App.css';
 
 class App extends Component {
@@ -15,7 +14,9 @@ class App extends Component {
             movieTerm :'',
             movies: [],
             activePage:1,
-            total_pages:1
+            total_pages:0,
+            errors:'',
+            popup:false
         }
     }
 
@@ -29,15 +30,21 @@ class App extends Component {
     onSearchSubmit =(term) =>{
         term.preventDefault(); //restict app to be reloaded
        
-        console.log('the query term is:',this.state.movieTerm);
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=85204a8cc33baf447559fb6d51b18313&language=en-US&include_adult=false&query=${this.state.movieTerm}`)
-        .then(response => response.json())
-        .then(data=>{
-            this.setState({movies:data.results,total_pages:data.total_pages,activePage:1});
-            console.log(data);
-        });
-        
-       
+        if (this.state.movieTerm.length>2 && this.state.movieTerm.match(/^[0-9a-z]+$/)){
+            this.setState({popup:false});
+            console.log('the query term is:',this.state.movieTerm);
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=85204a8cc33baf447559fb6d51b18313&language=en-US&include_adult=false&query=${this.state.movieTerm}`)
+            .then(response => response.json())
+            .then(data=>{
+                this.setState({movies:data.results,total_pages:data.total_pages,activePage:1});
+                console.log(data);
+            });  
+        }else if (this.state.movieTerm.length<3 && this.state.movieTerm.length!==0){
+            this.setState({errors:'you must type at least 3 characters',popup:true})
+        }else{
+            this.setState({errors:'You have typed not valid characters',popup:true})
+        }
+
     }
 
     onPageChange = (e, pageInfo) =>{
@@ -61,13 +68,17 @@ class App extends Component {
          
             <div className="app">  
                 <User />
-                <MovieSearch onTermChange={this.onTermChange} onSearchSubmit={this.onSearchSubmit} />
+                <Popup
+                    content={this.state.errors}
+                    open ={this.state.popup}
+                    position='top center'
+                    trigger={<MovieSearch onTermChange={this.onTermChange} onSearchSubmit={this.onSearchSubmit}/>}
+                />  
                 <Results movies={this.state.movies}/>
                 <section className="pages">
                 <Pagination
                     activePage={this.state.activePage}
                     boundaryRange={0}
-                    defaultActivePage={1}
                     ellipsisItem={null}
                     firstItem={null}
                     lastItem={null}
