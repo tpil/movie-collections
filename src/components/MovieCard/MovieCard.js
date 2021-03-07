@@ -1,10 +1,12 @@
-import React from 'react';
+import React,{useEffect,useState}from 'react';
 
-const MovieCard = ({image,title,rating}) => {
+const MovieCard = ({id,image,title,rating,onMovieClick}) => {
+
+
     return (
       
-            <div className="card">
-                <div className="image" >
+            <div id={id} className="card"  onClick={onMovieClick}>
+            <div className="image" >
                     <img src={image}/>
                 </div>
                 <div className="extra">

@@ -1,8 +1,6 @@
 .movies-container{
     margin:auto;
-    max-width:95%;
+    max-width:90%;
     padding:10px;
-    border:2px #020d18 solid;
-    border-radius: .25rem;
- 
+     
 }
