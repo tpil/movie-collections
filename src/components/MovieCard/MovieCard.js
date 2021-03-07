@@ -1,4 +1,5 @@
 import React,{useEffect,useState}from 'react';
+import './MovieCard.css';
 
 const MovieCard = ({id,image,title,rating,onMovieClick}) => {
 
@@ -10,7 +11,7 @@ const MovieCard = ({id,image,title,rating,onMovieClick}) => {
                     <img src={image}/>
                 </div>
                 <div className="extra">
-                    <h5 style={{'textAlign':'center'}}>{title}</h5>
+                    <h4 style={{'textAlign':'center'}}>{title}</h4>
                    
                     <div className="ui star rating right floated" data-rating="4"> <b>Rating:  </b>{rating}</div>
                 </div>

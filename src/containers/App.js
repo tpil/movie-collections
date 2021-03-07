@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+//import {BrowserRouter as Router, Switch, Route,    Link, useParams} from 'react-router-dom'; 
 import MovieSearch from '../components/MovieSearch/MovieSearch';
 import User from '../components/User/User';
 import Results from '../components/Results/Results';
+import MovieDetails from './MovieDetails/MovieDetails';
 import { Pagination,Popup } from 'semantic-ui-react'
 import './App.css';
 
@@ -21,7 +23,9 @@ class App extends Component {
             pagination_visibility:'hidden',
             errors:'',
             popup:false,
-            route:'search'
+            movieDetailsID:0,
+            route:"search"
+
         }
         
     }
@@ -70,43 +74,58 @@ class App extends Component {
 
     onMovieClick =(e) =>{
         //find movie id
-        console.log(this.state.movies[e.currentTarget.id]);
-        this.setState({route:'Details'});
+        //console.log(this.state.movies[e.currentTarget.id]);
+        
+        this.setState({movieDetailsID:e.currentTarget.id,route:"details"},()=>console.log(this.state.movies[this.state.movieDetailsID]) );
         
 
     }
+     onRouteChange = (newRoute) =>{
+
+        if (newRoute === 'search'){
+          this.setState({route:'search'});
+          }
+    }
+     
+     
 
     render() {
         return (
-         
-            <div className="app">  
-                <User />
-              
-                    <React.Fragment>
-                        <Popup
-                            content={this.state.errors}
-                            open ={this.state.popup}
-                            position='top center'
-                            trigger={<MovieSearch onTermChange={this.onTermChange} onSearchSubmit={this.onSearchSubmit}/>}
-                        />  
-                        <Results movies={this.state.movies} onMovieClick={this.onMovieClick}/>
-                        <section className="pages"  style={{'visibility':this.state.pagination_visibility}}>
-                            <Pagination
-                            
-                                activePage={this.state.activePage}
-                                boundaryRange={0}
-                                ellipsisItem={null}
-                                firstItem={null}
-                                lastItem={null}
-                                siblingRange={3}
-                                totalPages={this.state.total_pages}
-                                onPageChange ={this.onPageChange}
-                            />
-                        </section>
-                    </React.Fragment>
-                  
                
-            </div>
+                <div className="app">  
+                    <User />
+                    {
+                        (this.state.route==="search")
+                         ?<React.Fragment>
+                            <Popup
+                                content={this.state.errors}
+                                open ={this.state.popup}
+                                position='top center'
+                                trigger={<MovieSearch onTermChange={this.onTermChange} onSearchSubmit={this.onSearchSubmit}/>}
+                            />  
+                            <Results movies={this.state.movies} onMovieClick={this.onMovieClick}/>
+                            <section className="pages"  style={{'visibility':this.state.pagination_visibility}}>
+                                <Pagination
+                                
+                                    activePage={this.state.activePage}
+                                    boundaryRange={0}
+                                    ellipsisItem={null}
+                                    firstItem={null}
+                                    lastItem={null}
+                                    siblingRange={3}
+                                    totalPages={this.state.total_pages}
+                                    onPageChange ={this.onPageChange}
+                                />
+                            </section>
+                        </React.Fragment>
+                        :<MovieDetails route={this.onRouteChange} selectedMovie={this.state.movies[this.state.movieDetailsID]} />
+                 // 
+                  
+                      
+               }
+                
+                </div>
+           
         )
     }
 }
