@@ -46,7 +46,7 @@ class App extends Component {
             .then(response => response.json())
             .then(data=>{
                 this.setState({movies:data.results,total_pages:data.total_pages,activePage:1,pagination_visibility:'visible'});
-                console.log(data);
+                //console.log(data);
             });  
         }else if (this.state.movieTerm.length<3 && this.state.movieTerm.length!==0){
             this.setState({errors:'you must type at least 3 characters',popup:true})
@@ -63,7 +63,7 @@ class App extends Component {
             .then(response => response.json())
             .then(data=>{
                 this.setState({movies:data.results,total_pages:data.total_pages});
-                console.log(data);
+                //console.log(data);
             });
 
         });

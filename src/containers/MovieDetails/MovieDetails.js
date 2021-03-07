@@ -3,7 +3,7 @@ import { Grid,  Image, Segment,Button, Item , Rating, Label} from 'semantic-ui-r
 import './MovieDetails.css';
 
 const MovieDetails = ({route,selectedMovie}) => {
-    console.log('details props',selectedMovie.title);
+   
     
     return (
         <div className="MovieDetails">
@@ -18,16 +18,14 @@ const MovieDetails = ({route,selectedMovie}) => {
                 <Grid.Column>
                 <Item>
                     <Item.Content>
-                        <h1>{selectedMovie.title}   </h1>
-                        <p>
+                        <h1>{selectedMovie.title}   </h1> 
                         <Label as='a' basic>
-                        <Rating maxRating={6} defaultRating={(6*selectedMovie.vote_average)/10} icon='star' size='big' style={{'paddingRight':'10px'}} />
+                        <Rating maxRating={6} defaultRating={(6*selectedMovie.vote_average)/10} icon='star' size='large' style={{'paddingRight':'10px'}} />
                         
                         score: {selectedMovie.vote_average}
                         </Label>
-                        
-                        </p>
-                        <Item.Meta>
+                      <p> <br /></p>
+                       <Item.Meta>
                       
                         <Label>
                         <span className='price'>Release Date: </span>
