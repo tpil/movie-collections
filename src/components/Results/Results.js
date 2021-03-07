@@ -10,11 +10,11 @@ const Results = ({movies}) => {
         return <MovieCard key={index} image={"https://www.themoviedb.org/t/p/w500"+movie.poster_path+""} title={movie.title} rating={movie.vote_average}/>;
             
      });
-      let pages =list.length/6;
+     
      
      return (  
      <div className='movies-container'>
-         <div className="ui six  cards">
+         <div className="ui five  cards">
              {list}
          </div>
     </div>);

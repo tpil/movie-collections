@@ -8,9 +8,9 @@ const MovieCard = ({image,title,rating}) => {
                     <img src={image}/>
                 </div>
                 <div className="extra">
-                    <h5>{title}</h5>
-                    Rating:
-                    <div className="ui star rating" data-rating="4"></div>
+                    <h5 style={{'textAlign':'center'}}>{title}</h5>
+                   
+                    <div className="ui star rating right floated" data-rating="4"> <b>Rating:  </b>{rating}</div>
                 </div>
             </div>
       
