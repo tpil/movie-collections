@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/movie-collections/static/css/main.e52e2f75.chunk.css",
+    "main.js": "/movie-collections/static/js/main.e297cd3a.chunk.js",
+    "main.js.map": "/movie-collections/static/js/main.e297cd3a.chunk.js.map",
+    "runtime-main.js": "/movie-collections/static/js/runtime-main.42b76017.js",
+    "runtime-main.js.map": "/movie-collections/static/js/runtime-main.42b76017.js.map",
+    "static/js/2.6d2a8c2b.chunk.js": "/movie-collections/static/js/2.6d2a8c2b.chunk.js",
+    "static/js/2.6d2a8c2b.chunk.js.map": "/movie-collections/static/js/2.6d2a8c2b.chunk.js.map",
+    "static/js/3.01e95dd8.chunk.js": "/movie-collections/static/js/3.01e95dd8.chunk.js",
+    "static/js/3.01e95dd8.chunk.js.map": "/movie-collections/static/js/3.01e95dd8.chunk.js.map",
+    "index.html": "/movie-collections/index.html",
+    "static/css/main.e52e2f75.chunk.css.map": "/movie-collections/static/css/main.e52e2f75.chunk.css.map",
+    "static/js/2.6d2a8c2b.chunk.js.LICENSE.txt": "/movie-collections/static/js/2.6d2a8c2b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42b76017.js",
+    "static/js/2.6d2a8c2b.chunk.js",
+    "static/css/main.e52e2f75.chunk.css",
+    "static/js/main.e297cd3a.chunk.js"
+  ]
+}
