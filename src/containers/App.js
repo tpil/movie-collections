@@ -15,7 +15,6 @@ class App extends Component {
         super();
 
         this.state ={
-            route:'home',
             movieTerm :'',
             movies: [],
             activePage:1,

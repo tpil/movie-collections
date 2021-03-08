@@ -1,4 +1,4 @@
-import React,{useEffect,useState}from 'react';
+import React from 'react';
 import './MovieCard.css';
 
 const MovieCard = ({id,image,title,rating,onMovieClick}) => {
@@ -8,7 +8,7 @@ const MovieCard = ({id,image,title,rating,onMovieClick}) => {
       
             <div id={id} className="card"  onClick={onMovieClick}>
             <div className="image" >
-                    <img src={image}/>
+                    <img alt={title} src={image}/>
                 </div>
                 <div className="extra">
                     <h4 style={{'textAlign':'center'}}>{title}</h4>
